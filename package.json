@@ -2,7 +2,10 @@
   "name": "@tech/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "serve:frontend": "nx run frontend:serve",
+    "serve:backend": "nx run backend:serve:development"
+  },
   "private": true,
   "dependencies": {
     "@nestjs/common": "^10.0.2",
