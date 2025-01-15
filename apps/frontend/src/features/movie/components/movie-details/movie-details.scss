@@ -1,0 +1,15 @@
+.movie-details {
+  padding: 10px;
+
+  display: block;
+  &__info {
+    max-width: 800px;
+  }
+  &__badge {
+    border-radius: 2rem;
+    background-color: var(--color-secondary);
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-right: 5px;
+  }
+}

@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+/*Similar to 7-in-1 CSS architecture, just in 1 file for ease*/
+
+/*variables*/
+:root {
+  --color-primary: #36b9b2;
+  --color-secondary: #fec36c;
+  --spacing-1: 4px;
+}
+
+/*components*/
+
+button {
+  border: none;
+  background: white;
+}
+
+.v-pad {
+  width: var(--spacing-1);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+header {
+  background-color: white;
+  padding: 20px;
+}
+
+body {
+  margin: 0;
+}
+
+/*utilities*/
+.bg-white {
+  background-color: white;
+}
+
+.text-white {
+  color: white;
+}
+.text-center {
+  text-align: center;
+}
+
+.w-100 {
+  width: 100%;
+}

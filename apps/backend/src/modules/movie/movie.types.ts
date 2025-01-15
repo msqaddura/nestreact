@@ -14,3 +14,10 @@ export type Movie = {
   vote_average: number;
   vote_count: number;
 };
+
+export type TMDBAdapter = {
+  result: Movie[];
+  page: number;
+  total_pages: number;
+  total_results: number;
+};

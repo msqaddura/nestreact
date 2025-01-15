@@ -1,0 +1,14 @@
+.search {
+  &__input {
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    height: 40px;
+    border: 1px solid #ccc;
+  }
+  &__button {
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    height: 40px;
+    border: 1px solid #ccc;
+  }
+}

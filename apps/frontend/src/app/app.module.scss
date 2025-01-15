@@ -1,1 +1,13 @@
 /* Your styles goes here. */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-primary);
+}
+
+.section {
+  flex-grow: 1;
+  display: flex;
+  width: 100%;
+}
