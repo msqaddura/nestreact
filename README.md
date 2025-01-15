@@ -1,10 +1,25 @@
-## Run Frontend
+# Welcome
+the repo is a monolith using nxdev, consiting of two `apps` the frontend under `apps/frontend` and backend under `apps/backend`.
+
+the `*-e2e` folders are not in use but added for future use. 
+
+## Frontend
+under `apps/frontend`.
+
+HTML uses `react` framework on top of `typescript` along with `react-query`.
+
+Styling is with `scss` with a mixture of utility first approach, BEM, css modules, and a bit of `7-in-1` architecture.
+
+Testing is WIP.
 
 ```sh
 npm run fe
 ```
 
-## Run Backend
+## Backend
+under `apps/backend` which uses `nest` framework to connect to tmdb api.
+
+Testing is WIP.
 
 ```sh
 npm run be
