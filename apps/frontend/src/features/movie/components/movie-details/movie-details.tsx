@@ -26,7 +26,9 @@ export const MovieDetails = ({ movie }: Props) => {
         <br />
         <div>
           {movie.genres.map((genre) => (
-            <span className="movie-details__badge">{genre.name}</span>
+            <span key={`genre_${genre.id}`} className="movie-details__badge">
+              {genre.name}
+            </span>
           ))}
         </div>
         <br />

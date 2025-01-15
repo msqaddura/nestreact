@@ -1,13 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { searchMovies } from '../features/movie/api/movie.api';
 import { MovieList } from '../features/movie/components/movie-list/movie-list';
-import { MovieResponse } from '../features/movie/movie.types';
+
 import { SearchInput } from '../components/search/search-input';
 import { useSearchParams } from 'react-router-dom';
 import { Paginator } from '../components/paginator';
-
+import { useQuery } from 'react-query';
+import { Warning } from '../components/warning';
+import { Loader } from '../components/loader';
+import { Empty } from '../components/empty';
 export const MoviesPage = () => {
-  const [data, setData] = useState<MovieResponse>();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
   const page = searchParams.get('page') || '1';
@@ -26,23 +28,35 @@ export const MoviesPage = () => {
       return prev;
     });
   };
-  useEffect(() => {
-    searchMovies(query, page).then((data) => setData(data));
-  }, [query, page]);
+
+  const {
+    data: movies,
+    isError,
+    isLoading,
+    isSuccess,
+  } = useQuery(['movies', query, page], () => searchMovies(query, page), {
+    retry: false,
+  });
+
   return (
     <div className="w-100">
       <SearchInput query={query} onSearch={(e) => search(e)}></SearchInput>
-      {data && (
-        <div>
-          <MovieList movies={data.results}></MovieList>
-          <Paginator
-            page={+page}
-            itemsPerPage={20}
-            onPageChange={onPageChange}
-            totalItems={data.total_results}
-          />
-        </div>
-      )}
+      {isLoading && <Loader></Loader>}
+      {isError && <Warning></Warning>}
+      {isSuccess &&
+        (movies!.results.length === 0 ? (
+          <Empty></Empty>
+        ) : (
+          <div>
+            <MovieList movies={movies!.results}></MovieList>
+            <Paginator
+              page={+page}
+              itemsPerPage={20}
+              onPageChange={onPageChange}
+              totalItems={movies!.total_results}
+            />
+          </div>
+        ))}
     </div>
   );
 };
